@@ -10,12 +10,10 @@ namespace ConsoleApp
     /// </summary>
     public class Program
     {
-        private static string _path = @"C:\!!!\trade.bin";
-        private static string _dest = @"C:\!!!\trade.csv";
-
         public static void Main(string[] args)
         {
-            //CreateFile(2000000);
+            CreateFile(2000000, @"C:\!!!\trade.bin");
+            CreateFile(2000000, @"C:\!!!\trade1.bin");
             var manager = new TradeRecordFileConvertManager();
 
             manager.Add(@"C:\!!!\trade1.bin", @"C:\!!!\trade1.csv");
@@ -62,11 +60,11 @@ namespace ConsoleApp
             Console.ReadKey();
         }
 
-        static void CreateFile(int count)
+        static void CreateFile(int count, String filePath)
         {
             TradeRecord trade;
 
-            using (var writer = new BinaryWriter(File.OpenWrite(_path)))
+            using (var writer = new BinaryWriter(File.OpenWrite(filePath)))
             {
                 for (int i = 0; i < count; i++)
                 {
